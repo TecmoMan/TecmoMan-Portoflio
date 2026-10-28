@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TecmoMan's Home Page</title>
+<style>
+  :root{ --gray:#2a2a3c; --link:#7dbbff; --visited:#c895ff; }
+  *{box-sizing:border-box}
+  html{
+    background-color:#04001a;
+    background-image:
+      radial-gradient(circle at 92% 9%,#ff8a3d 0 34px,#c4531a 35px 37px,transparent 38px),
+      radial-gradient(circle at 6% 78%,#3dd6c8 0 24px,#1b8f86 25px 27px,transparent 28px),
+      radial-gradient(circle,#fff 1px,transparent 1.5px),
+      radial-gradient(circle,#9fb4ff 1px,transparent 1.5px),
+      radial-gradient(circle,#ffd966 1.5px,transparent 2px);
+    background-repeat:no-repeat,no-repeat,repeat,repeat,repeat;
+    background-attachment:fixed,fixed,scroll,scroll,scroll;
+    background-size:100% 100%,100% 100%,90px 90px,140px 140px,230px 230px;
+    background-position:0 0,0 0,0 0,40px 60px,100px 20px;
+  }
+  body{margin:0 auto; max-width:860px; padding:16px 10px 30px; color:#e8e8f2;
+    font:17px/1.5 "Times New Roman",Times,serif}
+  a{color:var(--link)} a:visited{color:var(--visited)} a:focus-visible{outline:2px dotted #f00; outline-offset:2px}
+  .win{background:var(--gray); border:3px outset #6a6a8c; padding:4px}
+  .title{background:linear-gradient(90deg,#4b0082,#d02090); color:#fff; padding:2px 8px;
+    font:bold 15px Arial,Helvetica,sans-serif; display:flex; justify-content:space-between}
+  .inner{padding:14px 14px 18px}
+  h1{margin:6px 0 4px; text-align:center; font:900 42px/1.1 "Arial Black",Impact,sans-serif; color:#ffd400;
+    text-shadow:3px 3px 0 #d02090; letter-spacing:1px}
+  .sub{text-align:center; margin:0 0 10px; font-style:italic}
+  .ticker{background:#000; color:#0f0; font:15px "Courier New",monospace; overflow:hidden; white-space:nowrap;
+    border:2px inset #6a6a8c; padding:2px 0}
+  .ticker span{display:inline-block; padding-left:100%; animation:scroll 20s linear infinite}
+  @keyframes scroll{to{transform:translateX(-100%)}}
+  hr{border:0; height:5px; margin:16px 0;
+    background:linear-gradient(90deg,#f00,#f90,#ff0,#0c0,#09f,#60f,#f0f)}
+  .nav{text-align:center; font:bold 16px Arial,sans-serif; margin:0}
+  .cols{display:grid; grid-template-columns:minmax(0,1fr) 230px; gap:16px; align-items:start}
+  .side{display:flex; flex-direction:column; gap:12px}
+  .side .box{margin:0; font-size:15px}
+  .side h3,.side h2{margin:0 0 6px; font:bold 16px Arial,sans-serif; color:#fff; background:#4b0082; padding:2px 6px}
+  .side ul{margin:0; padding-left:18px}
+  .side li{margin-bottom:6px}
+  h2{margin:0 0 8px; font:bold 22px Arial,Helvetica,sans-serif; color:#ff7a7a; text-decoration:underline}
+  .box{background:#14141f; border:2px inset #6a6a8c; padding:10px 12px; margin:0 0 14px}
+  table{border-collapse:collapse; width:100%; background:#14141f; margin-bottom:14px}
+  th,td{border:1px solid #6a6a8c; padding:5px 10px; text-align:left; vertical-align:top}
+  th{background:#4b0082; color:#fff; font-family:Arial,sans-serif}
+  .proj{background:#22223a; border:2px solid #6a6a8c; padding:10px 12px; margin:0 0 14px}
+  .proj h3{margin:0 0 4px; font:bold 19px Arial,sans-serif; color:#e0b3ff}
+  .proj img{display:block; width:100%; border:2px inset #6a6a8c; margin:8px 0}
+  .tech{font:13px "Courier New",monospace}
+  .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+  .btn{display:inline-block; padding:5px 16px; background:#3a3a56; color:#fff; text-decoration:none;
+    font:bold 15px Arial,sans-serif; border:3px outset #6a6a8c}
+  .btn:visited{color:#fff}
+  .btn:active{border-style:inset}
+  .new{color:#f00; font:bold 14px Arial,sans-serif; animation:blink 1s steps(2,start) infinite}
+  @keyframes blink{to{visibility:hidden}}
+  .construction{border:3px solid #000; padding:8px 12px; text-align:center; font:bold 15px Arial,sans-serif;
+    background:repeating-linear-gradient(45deg,#ffd400 0 14px,#111 14px 28px); margin:0 0 14px}
+  .construction span{background:#ffd400; padding:2px 10px; display:inline-block; border:2px solid #000}
+  .quote{border-left:6px solid #ff4fb8; padding:2px 0 2px 12px; font-style:italic}
+  .badges{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:12px}
+  .badge{font:bold 11px/1.2 Arial,sans-serif; width:88px; height:31px; display:flex; align-items:center;
+    justify-content:center; text-align:center; border:2px outset #6a6a8c; color:#fff; background:#4b0082}
+  .badge.b2{background:#006400} .badge.b3{background:#800000}
+  .foot{text-align:center; font-size:14px; margin:12px 0 0}
+
+  .planet-wrap{text-align:center; padding:34px 0 8px}
+  .planet,.planet:visited{display:inline-block; text-decoration:none; color:#ffd400; font:bold 16px Arial,sans-serif}
+  .planet img{display:block; width:min(288px,78vw); height:auto; margin:0 auto 6px; image-rendering:pixelated}
+  .planet:hover img{filter:brightness(1.15)}
+  .planet:focus-visible{outline:2px dotted #ffd400; outline-offset:6px}
+  .planet span{display:inline-block; background:#000; border:2px outset #6a6a8c; padding:3px 14px}
+  .planet-note{margin:8px 0 0; font-size:14px; color:#b8b8d4}
+  .map{display:grid; grid-template-columns:1fr 1fr; gap:12px 4px; text-align:center}
+  .map a{display:block; text-decoration:none; font:bold 13px Arial,sans-serif}
+  .map img{display:block; width:64px; height:64px; margin:0 auto 2px; image-rendering:pixelated}
+  .map a:hover img{filter:brightness(1.25)}
+  .side .small{margin:10px 0 0; font-size:13px; color:#b8b8d4; text-align:center}
+  @media (min-width:701px) and (min-height:820px){ .side{position:sticky; top:12px} }
+  @media (prefers-reduced-motion:reduce){ .ticker span,.new{animation:none} .ticker span{padding-left:8px} }
+  @media (max-width:700px){
+    .cols{grid-template-columns:1fr} .side{order:2} h1{font-size:30px}
+  }
+
+  [hidden]{display:none !important}
+  .break-screen{max-width:720px;margin:8vh auto 30px;background:#14141f;border:3px outset #6a6a8c;padding:6px;box-shadow:0 0 28px #4b0082}
+  .break-inner{padding:clamp(18px,5vw,38px);text-align:center}
+  .break-kicker{font:bold 13px "Courier New",monospace;color:#0f0;background:#000;border:2px inset #6a6a8c;padding:7px 10px;display:inline-block;letter-spacing:1px}
+  .break-screen h1{font-size:clamp(34px,8vw,54px);margin:22px 0 12px}
+  .break-screen h2{font-size:clamp(20px,4vw,26px);text-decoration:none;color:#e0b3ff;margin:12px 0}
+  .break-copy{max-width:540px;margin:0 auto 18px;font-size:18px}
+  .break-quote{color:#ffd400;font:bold 16px "Courier New",monospace;margin:22px 0}
+  .break-button{display:inline-block;margin:8px 4px;padding:11px 16px;background:#3a3a56;color:#fff!important;text-decoration:none;font:bold 15px Arial,sans-serif;border:3px outset #6a6a8c;cursor:pointer}
+  .break-button:hover{background:#4b0082}
+  .break-footer{font-size:13px;color:#b8b8d4;margin:24px 0 0}
+  .back-to-break{display:block;text-align:center;margin:16px auto 0}
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+
+<section class="break-screen" id="break-screen" aria-labelledby="break-title">
+  <div class="title"><span>TecmoMan // Transmission Status</span><span aria-hidden="true">_ □ ×</span></div>
+  <div class="break-inner">
+    <div class="break-kicker">TRANSMISSION RECEIVED · OCT 2026</div>
+    <h1 id="break-title">~ TecmoMan ~</h1>
+    <h2>Taking a Break</h2>
+    <p class="break-copy">After seven months of learning, building, and exploring, I'm taking a six-month break from cybersecurity and technical projects to make room for life beyond the screen.</p>
+    <p class="break-quote">The projects stay. The pressure stops.</p>
+    <p class="break-copy">This site isn't going anywhere. The work I've already shared will stay here as an archive — there's simply no new progress to chase for a while.</p>
+    <button class="break-button" id="view-portfolio" type="button">View Last Portfolio Update »</button>
+    <p class="break-footer">No deadlines. No milestones. Just a pause.<br>See you on the other side of the orbit.</p>
+  </div>
+</section>
+
+<div id="portfolio" hidden>
+<div class="win" id="top">
+  <div class="title"><span>TecmoMan's Home Page</span><span aria-hidden="true">_ □ ×</span></div>
+  <div class="inner">
+
+    <h1>~ TecmoMan ~</h1>
+    <p class="sub">Welcome to my little corner of the web!</p>
+    <div class="ticker" aria-hidden="true"><span>*** Hobbyist developer *** Networks and low-level computing *** Now learning C *** Thanks for visiting! ***</span></div>
+
+    <hr>
+    <p class="nav">[ <a href="#about">About</a> ] [ <a href="#skills">Skills</a> ] [ <a href="#learning">Learning</a> ] [ <a href="#projects">Projects</a> ] [ <a href="#contact">Contact</a> ]</p>
+    <hr>
+
+    <div class="cols">
+      <main>
+        <h2 id="about">About Me</h2>
+        <div class="box">
+          I build small labs that show how things work underneath: a company network in Cisco Packet Tracer, and a CPU register in a digital logic simulator.
+        </div>
+
+        <h2 id="skills">Skills</h2>
+        <table>
+          <tr><th>Area</th><th>What</th></tr>
+          <tr><td>Networking</td><td>Cisco Packet Tracer, routing and switching, ACLs</td></tr>
+          <tr><td>Digital logic</td><td>XOR gates, D flip-flops, clocks, registers</td></tr>
+          <tr><td>Learning</td><td>C</td></tr>
+        </table>
+
+        <h2 id="learning">Currently Learning</h2>
+        <div class="box quote">
+          C. The plan is to understand what happens below the surface, the same way my labs do for networks and circuits.
+        </div>
+
+        <hr>
+        <h2 id="projects">My Projects</h2>
+
+        <div class="proj">
+          <h3>Full Company Network Model</h3>
+          A company network with three departments, an isolated guest Wi-Fi, and server access that depends on role. IT can reach every server; HR and Marketing only reach their own.
+          <img src="network-preview.png" alt="Topology of the company network" loading="lazy" onerror="this.remove()">
+          <div class="tech">Tech: Packet Tracer, ISR4331, 3560-24PS, ACLs</div>
+          <div class="btns">
+            <a class="btn" href="https://github.com/TecmoMan/Company-Network" target="_blank" rel="noopener">View project</a>
+            <a class="btn" href="https://github.com/TecmoMan/Company-Network/releases/tag/v1.0" target="_blank" rel="noopener">Download</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>D Flip-Flop and XOR Lab <span class="new">NEW!</span></h3>
+          A step-by-step circuit showing how a CPU register keeps a bit stable between clock pulses.
+          <img src="flipflop-preview.png" alt="The D flip-flop circuit" loading="lazy" onerror="this.remove()">
+          <div class="tech">Tech: digital logic, XOR gate, D flip-flop, clock</div>
+          <div class="btns">
+            <a class="btn" href="https://github.com/TecmoMan/8-bit-register-digital/" target="_blank" rel="noopener">View project</a>
+            <a class="btn" href="https://github.com/TecmoMan/8-bit-register-digital/releases/tag/v.1.0.0" target="_blank" rel="noopener">Download</a>
+          </div>
+        </div>
+
+        <div class="construction"><span>MORE PROJECTS COMING SOON</span></div>
+
+        <hr>
+        <h2 id="contact">Contact</h2>
+        <div class="box">
+          GitHub: <a href="https://github.com/TecmoMan">github.com/TecmoMan</a><br>
+          E-mail: <a href="mailto:tecmo@duck.com">tecmo@duck.com</a><br>
+          Want to say hi? <a href="mailto:tecmo@duck.com?subject=Guestbook">Sign my guestbook</a> (it’s just an e-mail).
+        </div>
+      </main>
+
+      <aside class="side">
+        <div class="box">
+          <h2>What’s New</h2>
+          <ul>
+            <li><b>Oct 17, 2026</b><br>Added the flip-flop lab and download buttons.</li>
+            <li><b>Oct 17, 2026</b><br>Gave the whole site a 90s makeover.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>Planet Map</h2>
+          <div class="map">
+            <a href="#about"><img src="data:image/gif;base64,R0lGODlhQABAAIMAANf//bzr4n7m5HTGxG+emiuWmj9ubhVscxdSWjNBPxo6OQk5QwcnLAMXHAAAAAAAACH5BAEAAA4ALAAAAABAAEAAQAj/AB0IHEiwoMGDCBMqXMhw4IACBQYICACgokWLATIGGMCx4wACBhAgaNhwwQIEB1KqTAkRYkeIKUWKVNkS5gGRCxjo1NmgAUmOFzEKGDo0qEUBD2tq3NiRgNOnIA1INZCgqoKECExqnelS4tKvTQnULLBSpcysORn0XNuTQcIFBqDalKm1rl2tO/PuZLtTgd+qCRSoJVkVwdTDiBMfBuz3L2DGjRuTbMi2wd/GaitrXnt1sueGNxekrDvys+mBBwZQBBCAqGvXHFveRHsXZVyQCUyLHcubgGqjQ5N29RhWrIGYtAcn3N2S40Sj0CuC5QgVamKRCtIuUJD7IAPRK2nP/yxb9izOu3h5Vtbbc6HU6vCrI0aeXi8Dx48Zn3bQNu/mBn1xl59VgvnX3n4IJqjgggwySABaCBQw0VdEUUfAATmV1qBBBGQE3VetBSdbWQU8NdWCovHG20sj4iQTcrSZRJdbnhWAEnk3GhCRRBWKReJwH+0Wk0kGNsTRUhV2JEB0TDWnmkYewbdYYJ0tF6JGQX0lFFItLRVlfFFNlV9CN/3o1WpMQmkhcxAdBiORlVVZkIx0nYRSTcR9NBaO5iWn3n9vHVDTkOgVWqh9ma0VoF/KJfRedSOSB2OMiAKYF36M0cjQYWCCiVidRN6H6YDdfZadnWehJxKprFKZ1k4N/v+313rf+fUqoBsqBKCABNrXk5y5BivssMQWa+xndQn6lE2j6XSsQQ+p5JVRIGb0UUgnFdshj9GxphFSwrVknVS5RoSmdK/BltSbdiob5oIRvpYncS1CCKqMB0iFALCTZRVhpCoOOtuLOKLH02f+9nkjkHoeR3DAZIV264ENkbXnSiU+h66eLDG8ZgEOJ0exQk7xCG5Nvp0rVFLzfmmivtg5S/JvF4XoWnRIsTndmi+LGZimBx2pMrpDDX1yl2oGGd+UgC3nm5IadwtAcNJ5WZx8hyFAZWOlFmTxWGdKXbW1V7d03Xl68StQwuO5NCGW3lodJG98ovWnogipeueOSuauyWbEdfv5n0/enUQfvoJCDPjAfdo1K1+JBtoiaQrfa+irifanU1qE532bkLNdfhei7EG+XWSNIvToshFXbjnmBmo+qmAMwQVmwHXXh+jppNLOUAKfdypl1ufBLmqrgXmWgGGre6pYSDFyPWBkav+ugEzE95kY8o9RL/N+mzu++3bcU+lrrINrppP0Wz++1rC0bue+pZlr9ix/bfEaWE7pW3a/QozSn1/+R8AC/i8gADs=" alt="" width="64" height="64">About</a>
+            <a href="#skills"><img src="data:image/gif;base64,R0lGODlhQABAAIMAAP/vrfrGa+qnV9WOR8pkKY1jMJQ9FIItD2YlDEg3HEMoEUgbCDgSBSIKAwAAAAAAACH5BAEAAA4ALAAAAABAAEAAQAj/AB0IHEiwoMGDCBMqXMhw4AEDByI+JECRIkQEGDNqxHgAwQIGDRsKEBCgZAABAyoSGDBg5MiUFQ1AlEhTJsUCOHMWSKAgJESZBlSqJAmgqNGjAEyedMmyac6LHj8ymNqgQcKINim2HKm0JNOYHTEuGEu2rNmyU9N+7IkQJ0uLUKMu0IhVps6MaNOmTcC3b18FVUM2YDCYwVyaNDduzEu4quPHjkGGZKiXgYLLCvxq5ntZatrJoEOubGoAo4ECoVMT/LmSZNfXsJeifBsXQYLUCw7ARXy6JdKiAWAKhQvVLN7GVhOyjO1V6e+kJ4UDna6z+k7NlxEeVvxwOtCwculG/1xMtjJkyAtN5xxgvb17ndg7612QObtqzOUrUz0PeeplzVSpJuCABBZo4IEHjUZAaRlN1Nps1S2AIEINBtXSay8NF9NF+UlYIEuudeXSiCTO9pZWTTkF322gIUDAV8RRFKJX7M2kGF5zIdDdXQgQ1lCOHElkl2/PJVViijDJ1NFY5jm20GhbvZSia0VCJyWSKVYXFk+YSXZQAQ/OyJxJGS5oI3eIRbQZZ2wZZFiFQaGY4oZhnWWnfvw95qVBNil5o0ZkNdidn2LZGRVm+DW20HpvFfBdXXa9Vyhja/qlwJ4KDXbYe5zitJl8yPVnX2j56WcqnvypJZWTB2JWaaL6/f/36agTIpSqXufVquuuvPbq668DNmWmhVjmBCyfFnVUV1iQetddj77miJWMI9KJGI5MGlZrWBaOSSaJwi645EcLsEhgRRd6C1uJUhLg6Ex8CbiViCZGeaVQ3qGroqcJYMpQutENZy9Ku/0Jp3U8+ZuQhRtOt1IASAXnrpLO1hmojuN5FBhDh6U57QAQPzebSicWnG22yC3EbLM2gVwldLIxJey7haaF3sJxathayFV+i+W+ceWl3LzfklhSkTQKp1Kns7YFsrpHH0Vjw7wBhXDTB2UFIldjlknopBf/iSii2mGc1WhHSpexnaWe2p9lCL1J19n4Bj3Wn4ztl+dgV32bLWhik/4NuGJ527xxW2AmC7ZxQVKHLdtcWqrAAocjLqyS4DUeaXWP61cpZwoXlAACjOpkdaeclxXf2KD/yICOp6GOenyeRWYYZqBV9eYBnGKe+V+TG7536AvpdzHbZwn/dqjJCdiZZ8rvfd5U9CGqaKv/jT15tnn6l1l8xBPo6qvbjyUrm2Qfmyp9nzLf/LFxXzY9/PTXb78DAQEAOw==" alt="" width="64" height="64">Skills</a>
+            <a href="#projects"><img src="data:image/gif;base64,R0lGODlhQABAAIMAAPb/1M7siZXabXu4WHSWT0WUOkl4Nz9lL0JULCBUIi0+HxM6GBErEQgYCgAAAAAAACH5BAEAAA4ALAAAAABAAEAAQAj/AB0IHEiwoMGDCBMqXMhw4ICHAwpIlDhAQICLGDMGEPCQAAEDBxI0bLhgQYIEBSpaxCigJUcCBUCePFmyps2bCxjo1Llg5AEDEyVmBEC0qNGjGi+6fPlR5syTChAgUKAgoUeOELM+DBozJE2cN2f+NEC2rNSpVBXkZJCwwU6wOE/+lOixblmvCdYyaMC3r9+/I886FTu2btO7ZxMrXqxg58iGf3X23SnZ707AjzM3HADywNoEHjWLJkgWb4KxphMApQgxaOcDsL0u4Ct6AWy5c4/qNqq0ZVaYBWSXpMygZFqFBAYkXboy6caXE8kGrdvRbmnFxw/KxQ279O2vNZ+K/8+r9+1N4nv3NliIYOZw8yYLG56PWGra+1Tf9x3toMGCqIslht9976nHV3H38afgggw26OCDzDV3UUQUWTSAYQY8iFBQ450EVEXO+UahRGTltR6D4h2QUlYkptbhi1+px1ZmJXFVAEa7EbXRVtG95l6BxP1XFUOnxTZXATkmqZFLHXUFXk0JKlSAhM4lqaOIWjF5oUfeBTjkQQ/1puVSWgE32HjdGTAflyCdlZZOCElnI1edPQlXeeHJ5WZ+QCbEU0kvxlWkdHcJV9lfiPq10Hl//mnSaUCtyWad5KF3GWYMIfBTSGFBqqakh7UZoID5qTdaVN7FVlahjA3Ip5AANv/24IGuwnVpojpRpeFCBuLKAFWm7irssMQWa+yx/EV4IV5qbkkAsgZxhBVEVDLXm10iFevRRKapCKJzz1UnUUgnPjiui099qJKWI8bkXU7lKvidh1yl1l2P83YI74y15XVShWRSeKadd+oHJ40mVQguS1tROp5NlvL0JUO2qSqUlTruyKNrhloqJEnfwSYRxkixhGWLMb4VZUKndbXajSSXvCRWMDllUwJUoSXllAvHbHKENDdlGqlWEbDwULuF265HWjkr9AGtIhTmz0Azx6OPRR4Jqll7qiX1uk03Hd28cMlVFoZkdd0YvwUx3e6cThLMaJ5Gwqb2ewiJvOrL7uKmJah4QBYH6ExqBe5WQo+mSHanWcf2Y8S3IqqQo4P/eDOkdHpHU+SJYopQowXHJ52kd6Xca+fxIpR44IKb/enWnbXHJ+SKZoqATGC5DuqkUKs9ILy0PaapzYnLh/aqo3oJbOojoUppmntf16qrOdt3MH+/amrkqr37TmB5CEalq4NuAYjd9xAfahmsxNJaKu2ou8W2safHX5z60C6kloEr5+////4LCAA7" alt="" width="64" height="64">Projects</a>
+            <a href="#contact"><img src="data:image/gif;base64,R0lGODlhQABAAIMAAP3u/+K++7mX5pl9v4ZrsndcqWBIlEw4ekYuiDgqVy8dYyMWSRkOOg4HIAAAAAAAACH5BAEAAA4ALAAAAABAAEAAQAj/AB0IHEiwoMGDCBMqXMhwoAABAx5KFECggAEEGDEaIBBx4oABFg80bLhggQIFGTGexFigo4AAMCUOqHgRwUkFJXMuYMCTZ4MGIw0MgEmUKICjSJMiDQDRosqbNzWmPEC1aoIEJRMSMHARKtSUXMNyTakxbIGzBQhUPBuW6tWdP+MmZLCgrFiuaNXq3bt27MmdPuMKFtwT8MirB/Cy5XrgL+DCJa9Knky5MtaRJAkvsMwZ7k8GmEMH/Wjx4k4EolMTNFBApkujAIrKZtq0tN0Dl0WfbPlStsQASmNT7Oq1OE6dJU++Ba2149q8HWEGXxpTYsqPehczxr28AXODCHIa/x8/PidkqG4lex78c2GCA3n3fsSuFm1ptG25Yy3JUyflrKp5t9l+DBDWE3sIGtiTagw26OCDEEZ40AAGHGfSeAhsxNYBPEmIUEfTxUYbRB/9Rht9ejEGIUopsZghb71RR9RDINVkHH/thVYSSxzN9xxHvZ1I01MWItfTkTg2hEBr0oUYYgA1ZlgTWRkZl95VCw014kRNOnlUAE4RGdWSYlV15U4JzQQSlS/2ONGb88UpJ33apYdjjgZ1JR55XiG350p25ccdYOzNxQCgbIJ111hPPQYZf4ENViBQCpnEmn1n6TWnj9mF1BhOB0ran3nfLURVfHstdgACVClg5qv6cf/2XwKqbQbrcZMm6N2ofuak3gISxpXrZ36GqqtgHi60U2TF9rdfstBGK+201FbbIE5VQiWeTXRZaxBpdmUb1UYuVdQYsNNGN5tEz53lkmvzqeghkLMB92V1JlY3E6YFuAXhi6XhBWSM9/rWFKNTndShanyixJq6Bu9ro2M6RSpachotltHDb9I4pE0Uk3rkgZhZSkDHND7UJG1DattrxeJhVWpCChig8spFTccUhWI27NWvCy0ZY5defgnRxyC7mDCsb9Ha3IwmFv1llEl/JaUBsNqJ7kEtCanWa1LDhDCVfZWpdbcTRvSxYq/VuyW8cdYXMNaDBobQWj1vjGqq/PLAxVeddSPLdaMN91zcxmZpR3d3gyF0bnLFvSy5TmO+qt6wgh8EuYsYJnoTpLy6HGmhhrqIsFj82sfoXyMfmeDIytasGKaabio3Y6yPLipdhi3EQGK01x633/gtjmvr/r21tULv7f333FQtSrd+yVu2WWinps5Y0n8idqWslamG2F2tgjr6owOCD3SDdCF2FajH7t467zIHK+D5rcevIKXQsjfqr5LDnLcckIBJtU99MvvJ8gZokIoJa4EMjKAEqRUQADs=" alt="" width="64" height="64">Contact</a>
+          </div>
+          <p class="small">Click a planet to travel there.</p>
+        </div>
+        <div class="box">
+          <h3>Cool Links</h3>
+          <ul>
+            <li><a href="https://www.netacad.com/" target="_blank" rel="noopener">Cisco NetAcad</a></li>
+            <li><a href="https://www.spacejam.com/1996/" target="_blank" rel="noopener">The Space Jam site (1996)</a></li>
+            <li><a href="https://neocities.org/" target="_blank" rel="noopener">Neocities</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Flip-flop_(electronics)" target="_blank" rel="noopener">Flip-flops, explained</a></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Site Info</h3>
+          <ul>
+            <li>Projects: 2</li>
+            <li>Built with plain HTML and CSS</li>
+            <li>HTML, CSS &amp; a little JavaScript</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Incoming Transmission</h3>
+          <p style="margin:0">Hello, space traveler! You have landed on the home page of TecmoMan. Look around, click the planets, and come back soon.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="badges" aria-hidden="true">
+      <span class="badge">Made with Notepad</span>
+      <span class="badge b2">Best viewed in any browser</span>
+      <span class="badge b3">800x600 OK</span>
+    </div>
+    <p class="foot">© TecmoMan 2026</p>
+  </div>
+</div>
+
+<div class="planet-wrap">
+  <a class="planet" href="#top" aria-label="Back to the top of the page">
+    <img src="data:image/gif;base64,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" width="288" height="256" alt="">
+    <span>&#9733; Back to Orbit &#9733;</span>
+  </a>
+  <p class="planet-note">You have reached the end of the galaxy.</p>
+</div>
+  <button class="break-button back-to-break" id="back-to-break" type="button">« Back to Break Notice</button>
+</div>
+<script>
+  (function () {
+    const notice = document.getElementById('break-screen');
+    const portfolio = document.getElementById('portfolio');
+    document.getElementById('view-portfolio').addEventListener('click', function () {
+      notice.hidden = true;
+      portfolio.hidden = false;
+      window.scrollTo(0, 0);
+      document.title = "TecmoMan's Home Page — Portfolio Archive";
+    });
+    document.getElementById('back-to-break').addEventListener('click', function () {
+      portfolio.hidden = true;
+      notice.hidden = false;
+      window.scrollTo(0, 0);
+      document.title = "TecmoMan's Home Page";
+    });
+  }());
+</script>
+</body>
+</html>
